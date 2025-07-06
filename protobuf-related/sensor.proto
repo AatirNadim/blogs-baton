@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+// package iot.devices;
+
+
+message SensorReading {
+  enum Status {
+    UNKNOWN = 0;
+    OK = 1;
+    ERROR = 2;
+  }
+
+  string device_id = 1;
+  double temperature_c = 2; // in Celsius
+  int64 timestamp_ms = 3;
+  Status status = 4;
+
+}
+
