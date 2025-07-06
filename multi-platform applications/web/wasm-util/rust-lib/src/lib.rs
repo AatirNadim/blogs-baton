@@ -30,5 +30,8 @@ pub fn apply_watermark(image_data: &[u8], text: &str) -> Vec<u8> {
     web_sys::console::log_1(&format!("Applying watermark: '{}'", text).into());
 
     // Just return the original image data for this simple example.
+
+    // important, this function does not contain any logic, its potential implementation is only demonstrated
+
     image_data.to_vec()
 }
