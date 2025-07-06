@@ -1,0 +1,16 @@
+[package]
+name = "wasm-util"
+version = "0.1.0"
+edition = "2024"
+owner = "Aatir Nadim"
+
+[dependencies]
+wasm-bindgen = "0.2.100"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+
+[dependencies.web-sys]
+version = "0.3.77"
+features = ["console"]
