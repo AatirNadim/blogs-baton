@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { open } from "@tauri-apps/plugin-dialog";
 import { convertFileSrc } from "@tauri-apps/api/core"; 
@@ -8,7 +8,7 @@ function App() {
   const [selectedImagePath, setSelectedImagePath] = useState<string | null>(
     null
   );
-  const [watermarkText, setWatermarkText] = useState<string>("Tauri Rocks!");
+  const [watermarkText, setWatermarkText] = useState<string>("aatir");
   const [processedImagePath, setProcessedImagePath] = useState<string | null>(
     null
   );
@@ -73,7 +73,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Image Processor (React)</h1>
+      <h1>Image Processor (Aatir)</h1>
 
       <div className="row">
         <button onClick={selectImage}>Select Image</button>
@@ -110,12 +110,11 @@ function App() {
           <p>
             Saved at: <code>{processedImagePath}</code>
           </p>
-          <img
-            // `convertFileSrc` now comes from `@tauri-apps/api/path`
-            src={convertFileSrc(processedImagePath)}
+          {/* <img
+            src={processedImagePath}
             alt="Processed"
             className="result-image"
-          />
+          /> */}
         </div>
       )}
     </div>

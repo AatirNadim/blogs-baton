@@ -1,4 +1,4 @@
-use image::{GenericImage, GenericImageView, Rgba};
+use image::{Rgba};
 use imageproc::drawing::draw_text_mut;
 use rusttype::{Font, Scale};
 use std::path::PathBuf;
@@ -72,10 +72,10 @@ fn add_watermark(image_path: String, watermark_text: String) -> Result<String, S
         y: height * 0.1,
     };
 
-    let text_color = Rgba([255u8, 255u8, 255u8, 128u8]);
+    let text_color = Rgba([255u8, 255u8, 255u8, 255u8]);
 
-    let x_pos = (img.width() as f32 * 0.95) as i32;
-    let y_pos = (img.height() as f32 * 0.95) as i32;
+    let x_pos = (img.width() as f32 * 0.1) as i32;
+    let y_pos = (img.height() as f32 * 0.1) as i32;
 
     draw_text_mut(
         &mut img,
@@ -88,7 +88,15 @@ fn add_watermark(image_path: String, watermark_text: String) -> Result<String, S
     );
 
     let output_path = get_output_path(&image_path, "watermarked")?;
-    img.save(&output_path).map_err(|e| e.to_string())?;
+    // Handle image save errors with a more descriptive message
+    match img.save(&output_path) {
+        Ok(_) => Ok(output_path),
+        Err(e) => {
+            eprintln!("\n\nFailed to save watermarked image: {}\n\n", e);
+            return Err(format!("Failed to save watermarked image: {}", e));
+        }
+    }
+    // img.save(&output_path).map_err(|e| e.to_string())?;
 
-    Ok(output_path)
+    // Ok(output_path)
 }
