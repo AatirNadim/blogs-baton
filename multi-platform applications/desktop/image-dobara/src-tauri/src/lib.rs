@@ -52,7 +52,6 @@ fn apply_grayscale(image_path: String) -> Result<String, String> {
     let mut img = image::open(&image_path).map_err(|e| e.to_string())?;
     img = img.grayscale();
 
-    // The call to our helper no longer needs the app handle
     let output_path = get_output_path(&image_path, "grayscale")?;
     img.save(&output_path).map_err(|e| e.to_string())?;
 
@@ -88,7 +87,6 @@ fn add_watermark(image_path: String, watermark_text: String) -> Result<String, S
         &watermark_text,
     );
 
-    // And the call here no longer needs the app handle
     let output_path = get_output_path(&image_path, "watermarked")?;
     img.save(&output_path).map_err(|e| e.to_string())?;
 
