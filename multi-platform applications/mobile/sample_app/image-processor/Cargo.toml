@@ -1,0 +1,14 @@
+[package]
+name = "image-processor"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+flutter_rust_bridge = "2.0.0-dev.32"
+
+# Add the image crate with features for the formats you'll use
+image = { version = "0.24", features = ["png", "jpeg"] }
+anyhow = "1.0"

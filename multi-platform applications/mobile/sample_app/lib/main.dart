@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:sample_app/components/imageProcessingUI.dart';
 import 'components/paddedText.dart';
 
 
 void main() {
-  runApp(const MyApp());
+  runApp(const HomeScreen());
 }
 
 class MyApp extends StatelessWidget {
