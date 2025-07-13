@@ -1,0 +1,9 @@
+# ffigen.yaml
+name: ImageProcessorBindings
+description: Bindings for the Rust image processing library.
+output: "lib/services/image_processor_bindings.dart" # Generated file
+headers:
+  entry-points:
+    - "rust_lib/rust_server_api.h" # Path to your C header
+preamble: |
+  // ignore_for_file: non_constant_identifier_names
